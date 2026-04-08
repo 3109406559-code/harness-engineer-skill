@@ -20,6 +20,14 @@
   <strong>Turn fragile prompt-driven workflows into recoverable, validator-first harness projects.</strong>
 </p>
 
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="./CONTRIBUTING.md">Contributing</a> ·
+  <a href="./ROADMAP.md">Roadmap</a> ·
+  <a href="./RELEASING.md">Releasing</a>
+</p>
+
 ## Overview
 
 `harness-engineer` is a Codex skill for designing and scaffolding durable agent harness projects.
@@ -40,6 +48,13 @@ Instead of treating the prompt as the whole system, the skill helps Codex:
 - scaffold real project structure
 - externalize resumable state
 - add Ralph-style loop support when repeated passes are needed
+
+## Project Status
+
+- Current release: [`v0.1.0`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.0)
+- Stability: usable and validated for baseline and Ralph Loop scaffolds
+- Scope: one production-ready skill, one rollback snapshot, and one scaffold helper
+- Evolution model: doctrine-first updates, script updates second, skill trigger logic last
 
 ## Highlights
 
@@ -218,6 +233,12 @@ The current skill has been validated with:
   - Ralph Loop scaffold generation
   - generated validator execution
   - generated runner execution
+
+## Project Maintenance
+
+- Contribution guide: [CONTRIBUTING.md](./CONTRIBUTING.md)
+- Roadmap: [ROADMAP.md](./ROADMAP.md)
+- Release process: [RELEASING.md](./RELEASING.md)
 
 ## License
 

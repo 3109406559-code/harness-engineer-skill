@@ -20,6 +20,14 @@
   <strong>把脆弱的 prompt 流程，升级成可恢复、可验证、可长期运行的 harness 工程。</strong>
 </p>
 
+<p align="center">
+  <a href="#简介">简介</a> ·
+  <a href="#快速开始">快速开始</a> ·
+  <a href="./CONTRIBUTING.md">贡献指南</a> ·
+  <a href="./ROADMAP.md">路线图</a> ·
+  <a href="./RELEASING.md">发布策略</a>
+</p>
+
 ## 简介
 
 `harness-engineer` 是一个用于设计并脚手架化 Agent Harness 工程的 Codex skill。
@@ -40,6 +48,13 @@
 - 生成真正的工程骨架
 - 外置可恢复状态
 - 在需要时直接生成 Ralph 风格循环骨架
+
+## 项目状态
+
+- 当前版本：[`v0.1.0`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.0)
+- 当前状态：baseline 与 Ralph Loop 两类 scaffold 已可稳定使用
+- 当前范围：一个正式 skill、一个回滚快照、一个脚手架脚本
+- 演进方式：优先更新 doctrine，再更新脚手架脚本，最后才动 skill 触发逻辑
 
 ## 核心亮点
 
@@ -218,6 +233,12 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
   - Ralph Loop scaffold 生成
   - 生成后的 validator 执行
   - 生成后的 runner 执行
+
+## 项目维护
+
+- 贡献指南：[CONTRIBUTING.md](./CONTRIBUTING.md)
+- 路线图：[ROADMAP.md](./ROADMAP.md)
+- 发布策略：[RELEASING.md](./RELEASING.md)
 
 ## License
 
