@@ -1,0 +1,38 @@
+<svg width="1200" height="330" viewBox="0 0 1200 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="330" rx="24" fill="#0F172A"/>
+  <text x="48" y="54" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">Ralph Loop Skeleton</text>
+  <text x="48" y="84" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="18">One pass advances one smallest verifiable unit. State lives in files, not in chat memory.</text>
+
+  <rect x="48" y="126" width="180" height="120" rx="18" fill="#13233D" stroke="#2C4A6B"/>
+  <text x="78" y="168" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">PRD + Tasks</text>
+  <text x="78" y="200" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="16">Contract</text>
+  <text x="78" y="224" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="16">Mutable state</text>
+
+  <rect x="276" y="126" width="180" height="120" rx="18" fill="#152C2C" stroke="#2A5E5C"/>
+  <text x="321" y="168" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Runner</text>
+  <text x="303" y="200" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="16">Loop policy</text>
+  <text x="303" y="224" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="16">Exit codes</text>
+
+  <rect x="504" y="126" width="180" height="120" rx="18" fill="#35201B" stroke="#7C3AED"/>
+  <text x="549" y="168" fill="#E9D5FF" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Worker</text>
+  <text x="528" y="200" fill="#F1F5F9" font-family="Segoe UI, Arial, sans-serif" font-size="16">One task</text>
+  <text x="528" y="224" fill="#F1F5F9" font-family="Segoe UI, Arial, sans-serif" font-size="16">One batch</text>
+
+  <rect x="732" y="126" width="180" height="120" rx="18" fill="#2E2612" stroke="#A16207"/>
+  <text x="770" y="168" fill="#FDE68A" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Validator</text>
+  <text x="762" y="200" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16">Pass or reject</text>
+  <text x="762" y="224" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16">Advance safely</text>
+
+  <rect x="960" y="126" width="192" height="120" rx="18" fill="#2A1632" stroke="#C026D3"/>
+  <text x="1001" y="168" fill="#F5D0FE" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Progress + Logs</text>
+  <text x="992" y="200" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16">Resumable state</text>
+  <text x="992" y="224" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="16">Evidence</text>
+
+  <path d="M228 186H276" stroke="#94A3B8" stroke-width="4"/>
+  <path d="M456 186H504" stroke="#94A3B8" stroke-width="4"/>
+  <path d="M684 186H732" stroke="#94A3B8" stroke-width="4"/>
+  <path d="M912 186H960" stroke="#94A3B8" stroke-width="4"/>
+  <path d="M1056 246V284H366V246" stroke="#10B981" stroke-width="4"/>
+  <path d="M366 284V246" stroke="#10B981" stroke-width="4"/>
+  <text x="487" y="309" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Fresh context can restart from files</text>
+</svg>

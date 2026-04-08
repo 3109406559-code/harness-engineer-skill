@@ -1,67 +1,76 @@
 # Harness Engineer
 
 <p align="center">
-  <strong>一个用于设计并脚手架化 Agent Harness 工程的 Codex Skill。</strong>
+  <img src="./assets/banner.svg" alt="Harness Engineer banner" width="100%">
 </p>
 
 <p align="center">
-  <a href="./README.md">English</a>
+  <a href="./README.md"><strong>English</strong></a>
 </p>
 
 <p align="center">
-  <img alt="Skill" src="https://img.shields.io/badge/类型-Codex%20Skill-0A7EA4">
-  <img alt="Focus" src="https://img.shields.io/badge/主题-Harness%20Engineering-1F9D55">
-  <img alt="Loop" src="https://img.shields.io/badge/Ralph%20Preset-已内置-7C3AED">
+  <img alt="类型" src="https://img.shields.io/badge/类型-Codex%20Skill-0A7EA4">
+  <img alt="主题" src="https://img.shields.io/badge/主题-Harness%20Engineering-1F9D55">
+  <img alt="Ralph Loop" src="https://img.shields.io/badge/Ralph%20Loop-已内置%20Preset-7C3AED">
   <img alt="Built with Codex" src="https://img.shields.io/badge/Built%20with-Codex-10B981">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-EAB308">
 </p>
 
-## 这个仓库是干什么的
+<p align="center">
+  <strong>把脆弱的 prompt 流程，升级成可恢复、可验证、可长期运行的 harness 工程。</strong>
+</p>
 
-`harness-engineer` 是一个可复用的 skill，用来把长任务、重复性任务、高风险任务或需要多人协作的 Agent 工作，变成真正可运行、可恢复、可验证的 harness 工程。
+## 简介
 
-它的目标不是“堆更多提示词”，而是帮助 Codex：
+`harness-engineer` 是一个用于设计并脚手架化 Agent Harness 工程的 Codex skill。
+
+它面向的任务通常具备这些特征：
+
+- 长时间运行
+- 可重复执行
+- 多步骤推进
+- 风险较高
+- 可能跨越多次 fresh-context 重启
+
+这个 skill 不把 prompt 当成全部系统，而是帮助 Codex：
 
 - 先澄清执行合同
-- 选择最小可行拓扑
-- 搭出可恢复的工程骨架
-- 区分稳定知识和可变状态
-- 优先建立 validator 和机械约束
-- 在需要时直接生成 Ralph 风格的循环骨架
+- 选择最小安全拓扑
+- 区分稳定知识与可变状态
+- 生成真正的工程骨架
+- 外置可恢复状态
+- 在需要时直接生成 Ralph 风格循环骨架
 
-这个仓库同时包含：
+## 核心亮点
 
-- 当前正式版 `harness-engineer`
-- 一个升级 Ralph Loop preset 之前的备份快照
+<table>
+  <tr>
+    <td width="33%">
+      <strong>Harness Doctrine</strong><br>
+      把 OpenAI、Anthropic、Ralph、OpenHarness 和本地实践笔记里的方法论蒸馏进一个可复用 skill。
+    </td>
+    <td width="33%">
+      <strong>脚手架脚本</strong><br>
+      内置 Python 生成器，可直接产出 baseline 或 Ralph Loop 风格项目骨架。
+    </td>
+    <td width="33%">
+      <strong>Ralph Loop Preset</strong><br>
+      直接生成 <code>PROMPT.md</code>、<code>tasks.json</code>、<code>progress.txt</code>、日志、归档和 Ralph runner。
+    </td>
+  </tr>
+</table>
 
-## 这个 Skill 能做什么
+## Ralph Loop 一眼看懂
 
-### 通用 Harness 工程设计
-
-- 把 `AGENTS.md` 当目录地图，而不是百科全书
-- 把 `docs/` 当系统知识库
-- 把 `progress.txt` 当可恢复状态文件
-- 用 `tasks.json` / `features.json` 保存可变的机器状态
-- 用 validator 和结构规则替代“请遵守规范”式软提醒
-- 保留后续升级空间，不把脚手架写死
-
-### Ralph Loop 支持
-
-当前版本已经内置显式的 `ralph-loop` preset，可直接脚手架出：
-
-- `PROMPT.md`
-- `progress.txt`
-- `tasks.json`
-- `docs/exec-plans/current-batch-plan.md`
-- `logs/failure-log.jsonl`
-- `archives/`
-- Ralph 风格 runner 模板
-- 对应 validator
+<p align="center">
+  <img src="./assets/ralph-loop-flow.svg" alt="Ralph Loop flow" width="100%">
+</p>
 
 ## 仓库结构
 
 ```text
 harness-engineer-skill/
+├── assets/
 ├── README.md
 ├── README.zh-CN.md
 ├── LICENSE
@@ -76,47 +85,51 @@ harness-engineer-skill/
     └── harness-engineer-backup-20260408-161519/
 ```
 
-## 包含的版本
+## 包含版本
 
-| 版本 | 位置 | 说明 |
+| 版本 | 路径 | 说明 |
 |---|---|---|
 | 当前正式版 | [`skills/harness-engineer/`](./skills/harness-engineer/) | 已包含 Ralph Loop preset |
-| 备份快照 | [`snapshots/harness-engineer-backup-20260408-161519/`](./snapshots/harness-engineer-backup-20260408-161519/) | 加入 Ralph preset 之前的备份版本 |
+| 历史快照 | [`snapshots/harness-engineer-backup-20260408-161519/`](./snapshots/harness-engineer-backup-20260408-161519/) | 加入 Ralph preset 前的备份版本 |
 
-## 安装方式
+## 快速开始
 
-把当前 skill 复制到你的 Codex skills 目录即可。
+### 1. 安装 skill
 
-### Windows PowerShell
+<details>
+<summary><strong>Windows PowerShell</strong></summary>
 
 ```powershell
 Copy-Item -LiteralPath .\skills\harness-engineer -Destination "$HOME\.codex\skills\harness-engineer" -Recurse -Force
 ```
 
-### macOS / Linux
+</details>
+
+<details>
+<summary><strong>macOS / Linux</strong></summary>
 
 ```bash
 mkdir -p ~/.codex/skills
 cp -R ./skills/harness-engineer ~/.codex/skills/harness-engineer
 ```
 
-## 快速使用
+</details>
 
-安装后，可以显式调用这个 skill：
+### 2. 显式调用
 
 ```text
 Use $harness-engineer to clarify requirements and scaffold a robust harness project.
 ```
 
-典型用法：
+典型请求：
 
-- “Use $harness-engineer to design a harness for a batch document-processing pipeline.”
-- “Use $harness-engineer to refactor this prompt-only agent workflow into a recoverable harness.”
-- “Use $harness-engineer to scaffold a Ralph Loop project for a multi-pass remediation task.”
+- `Use $harness-engineer to design a harness for a batch document-processing pipeline.`
+- `Use $harness-engineer to refactor this prompt-only workflow into a recoverable harness.`
+- `Use $harness-engineer to scaffold a Ralph Loop project for a multi-pass remediation task.`
 
 ## 脚手架脚本
 
-Skill 自带一个辅助脚本：
+内置辅助脚本：
 
 [`skills/harness-engineer/scripts/init_harness_project.py`](./skills/harness-engineer/scripts/init_harness_project.py)
 
@@ -142,17 +155,39 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 - `--with-failure-log`
 - `--with-archives`
 
+## Skill 会生成什么
+
+### Baseline 模式
+
+- `AGENTS.md`
+- `config.yaml`
+- `progress.txt`
+- `docs/`
+- `scripts/`
+- validator 占位脚本
+- summary 占位文件
+
+### Ralph Loop 模式
+
+- baseline 模式全部内容
+- `PROMPT.md`
+- `tasks.json`
+- `docs/exec-plans/current-batch-plan.md`
+- `logs/failure-log.jsonl`
+- `archives/`
+- Ralph 风格 runner 模板
+
 ## 理念来源
 
-这个 skill 是多方资料蒸馏后的结果，主要包括：
+这个 skill 是一个再蒸馏、再工程化的整合成果，主要来源于：
 
-- OpenAI 的 Harness Engineering 文章
-- Anthropic 关于长任务 harness 的两篇文章
+- OpenAI 的 Harness Engineering 理念
+- Anthropic 关于长任务 harness 的文章
 - `snarktank/ralph`
 - `HKUDS/OpenHarness`
-- 以及额外的本地实践笔记与工程抽象
+- 本地实践笔记与方法论抽象
 
-这个仓库不是上述任一项目的官方发布，而是基于它们进行的再提炼与工程化整合。
+它不是上述任一项目的官方下游发布，而是基于这些来源形成的独立 synthesis。
 
 ## 核心理念
 
@@ -161,7 +196,7 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 这个 skill 默认相信：
 
 - 长任务必须把状态外置
-- validator 比自我感觉“做完了”更重要
+- validator 比“感觉差不多了”更重要
 - 拓扑应该尽量小
 - 模型变强后，脚手架应该允许被削减，而不是无限膨胀
 
@@ -170,17 +205,19 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 - 人类项目拥有者与维护者：仓库维护者
 - AI 实现与打包协助：OpenAI Codex
 
-当前采用 README 显式署名的方式来标注 Codex 参与。如果你后面还想让提交历史也带上类似归属，可以在未来的 commit 中加入 co-author trailer，或者使用专门的 bot / 账号身份。
+当前采用 README 显式署名的方式标注 Codex 参与。如果你后面还想让提交历史也带上类似归属，可以在未来 commit 中加入 co-author trailer，或者使用专门的 bot / 账号身份。
 
 ## 已做验证
 
-当前 skill 已经过如下验证：
+当前 skill 已通过：
 
-- `quick_validate.py` 校验 `SKILL.md`
+- `quick_validate.py` 对 skill 的基础校验
 - 脚手架脚本的 Python 编译检查
-- 两种脚手架 smoke test：
-  - baseline scaffold
-  - Ralph Loop scaffold
+- 以下 smoke test：
+  - baseline scaffold 生成
+  - Ralph Loop scaffold 生成
+  - 生成后的 validator 执行
+  - 生成后的 runner 执行
 
 ## License
 

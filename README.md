@@ -1,67 +1,76 @@
 # Harness Engineer
 
 <p align="center">
-  <strong>A Codex skill for designing and scaffolding durable agent harness projects.</strong>
+  <img src="./assets/banner.svg" alt="Harness Engineer banner" width="100%">
 </p>
 
 <p align="center">
-  <a href="./README.zh-CN.md">简体中文</a>
+  <a href="./README.zh-CN.md"><strong>简体中文</strong></a>
 </p>
 
 <p align="center">
-  <img alt="Skill" src="https://img.shields.io/badge/Type-Codex%20Skill-0A7EA4">
+  <img alt="Type" src="https://img.shields.io/badge/Type-Codex%20Skill-0A7EA4">
   <img alt="Focus" src="https://img.shields.io/badge/Focus-Harness%20Engineering-1F9D55">
-  <img alt="Loop" src="https://img.shields.io/badge/Ralph%20Preset-Included-7C3AED">
+  <img alt="Ralph Loop" src="https://img.shields.io/badge/Ralph%20Loop-Preset%20Included-7C3AED">
   <img alt="Built with Codex" src="https://img.shields.io/badge/Built%20with-Codex-10B981">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-EAB308">
 </p>
 
-## Why This Exists
+<p align="center">
+  <strong>Turn fragile prompt-driven workflows into recoverable, validator-first harness projects.</strong>
+</p>
 
-`harness-engineer` is a reusable skill for turning long-running, repeatable, or high-stakes agent work into a real harness project.
+## Overview
 
-Instead of relying on one giant prompt, it helps Codex:
+`harness-engineer` is a Codex skill for designing and scaffolding durable agent harness projects.
+
+It is built for tasks that are:
+
+- long-running
+- repeatable
+- multi-step
+- high-stakes
+- likely to span fresh-context restarts
+
+Instead of treating the prompt as the whole system, the skill helps Codex:
 
 - clarify the execution contract first
 - choose the smallest safe topology
-- scaffold a recoverable project structure
-- separate durable docs from mutable machine state
-- build validator-first loops
-- generate Ralph-style loop skeletons when repeated passes are needed
+- separate stable docs from mutable machine state
+- scaffold real project structure
+- externalize resumable state
+- add Ralph-style loop support when repeated passes are needed
 
-This repository contains:
+## Highlights
 
-- the current `harness-engineer` skill
-- an earlier backup snapshot from before the Ralph Loop preset was added
+<table>
+  <tr>
+    <td width="33%">
+      <strong>Harness Doctrine</strong><br>
+      Encodes practical harness engineering principles distilled from OpenAI, Anthropic, Ralph, OpenHarness, and local practitioner notes.
+    </td>
+    <td width="33%">
+      <strong>Scaffold Script</strong><br>
+      Ships a Python helper that creates baseline or Ralph Loop harness projects with docs, logs, progress state, and validators.
+    </td>
+    <td width="33%">
+      <strong>Ralph Loop Preset</strong><br>
+      Generates a ready-to-customize loop skeleton with <code>PROMPT.md</code>, <code>tasks.json</code>, <code>progress.txt</code>, logs, archives, and a Ralph runner.
+    </td>
+  </tr>
+</table>
 
-## What the Skill Covers
+## Ralph Loop at a glance
 
-### Core harness engineering
-
-- `AGENTS.md` as a directory map, not an encyclopedia
-- `docs/` as the durable system of record
-- `progress.txt` as resumable agent-readable state
-- structured mutable state via `tasks.json` or `features.json`
-- validators and mechanical checks over soft reminders
-- upgrade-friendly scaffold design
-
-### Ralph Loop support
-
-The current skill includes an explicit `ralph-loop` preset that scaffolds:
-
-- `PROMPT.md`
-- `progress.txt`
-- `tasks.json`
-- `docs/exec-plans/current-batch-plan.md`
-- `logs/failure-log.jsonl`
-- `archives/`
-- a Ralph-style runner template
-- a matching validator
+<p align="center">
+  <img src="./assets/ralph-loop-flow.svg" alt="Ralph Loop flow" width="100%">
+</p>
 
 ## Repository Layout
 
 ```text
 harness-engineer-skill/
+├── assets/
 ├── README.md
 ├── README.zh-CN.md
 ├── LICENSE
@@ -78,41 +87,45 @@ harness-engineer-skill/
 
 ## Included Versions
 
-| Version | Location | Notes |
+| Version | Path | Notes |
 |---|---|---|
-| Current | [`skills/harness-engineer/`](./skills/harness-engineer/) | Includes the Ralph Loop preset |
-| Snapshot | [`snapshots/harness-engineer-backup-20260408-161519/`](./snapshots/harness-engineer-backup-20260408-161519/) | Backup from before the Ralph Loop preset upgrade |
+| Current | [`skills/harness-engineer/`](./skills/harness-engineer/) | Active release with the Ralph Loop preset |
+| Snapshot | [`snapshots/harness-engineer-backup-20260408-161519/`](./snapshots/harness-engineer-backup-20260408-161519/) | Backup from before the Ralph preset upgrade |
 
-## Installation
+## Quick Start
 
-Copy the current skill into your Codex skills directory.
+### 1. Install the skill
 
-### Windows PowerShell
+<details>
+<summary><strong>Windows PowerShell</strong></summary>
 
 ```powershell
 Copy-Item -LiteralPath .\skills\harness-engineer -Destination "$HOME\.codex\skills\harness-engineer" -Recurse -Force
 ```
 
-### macOS / Linux
+</details>
+
+<details>
+<summary><strong>macOS / Linux</strong></summary>
 
 ```bash
 mkdir -p ~/.codex/skills
 cp -R ./skills/harness-engineer ~/.codex/skills/harness-engineer
 ```
 
-## Quick Start
+</details>
 
-Once installed, invoke the skill explicitly when you want Codex to design a harness project:
+### 2. Invoke it explicitly
 
 ```text
 Use $harness-engineer to clarify requirements and scaffold a robust harness project.
 ```
 
-Typical requests:
+Typical prompts:
 
-- “Use $harness-engineer to design a harness for a batch document-processing pipeline.”
-- “Use $harness-engineer to refactor this prompt-only agent workflow into a recoverable harness.”
-- “Use $harness-engineer to scaffold a Ralph Loop project for a multi-pass remediation task.”
+- `Use $harness-engineer to design a harness for a batch document-processing pipeline.`
+- `Use $harness-engineer to refactor this prompt-only workflow into a recoverable harness.`
+- `Use $harness-engineer to scaffold a Ralph Loop project for a multi-pass remediation task.`
 
 ## Scaffold Script
 
@@ -142,17 +155,39 @@ Useful flags:
 - `--with-failure-log`
 - `--with-archives`
 
+## What the Skill Scaffolds
+
+### Baseline mode
+
+- `AGENTS.md`
+- `config.yaml`
+- `progress.txt`
+- `docs/`
+- `scripts/`
+- validator placeholder
+- summary placeholder
+
+### Ralph Loop mode
+
+- everything in baseline mode
+- `PROMPT.md`
+- `tasks.json`
+- `docs/exec-plans/current-batch-plan.md`
+- `logs/failure-log.jsonl`
+- `archives/`
+- a Ralph-style runner template
+
 ## Design Sources
 
-This skill was shaped by a synthesis of:
+This skill is an original synthesis shaped by:
 
-- OpenAI’s harness engineering article
-- Anthropic’s long-running harness articles
+- OpenAI harness engineering ideas
+- Anthropic articles on long-running harnesses
 - `snarktank/ralph`
 - `HKUDS/OpenHarness`
-- additional practitioner notes and distilled local doctrine
+- distilled local practitioner notes
 
-This repository is an original synthesis layer, not an official upstream release.
+It is not an official upstream release of any of those sources.
 
 ## Philosophy
 
@@ -174,13 +209,15 @@ This repository uses explicit README attribution for Codex. If you also want Cod
 
 ## Validation
 
-The current skill was validated with:
+The current skill has been validated with:
 
-- `quick_validate.py` against `SKILL.md`
+- `quick_validate.py` against the skill itself
 - Python compile checks for the scaffold script
-- smoke tests for both:
+- smoke tests for:
   - baseline scaffold generation
   - Ralph Loop scaffold generation
+  - generated validator execution
+  - generated runner execution
 
 ## License
 
