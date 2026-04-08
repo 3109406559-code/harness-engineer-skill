@@ -12,104 +12,75 @@
   <img alt="类型" src="https://img.shields.io/badge/类型-Codex%20Skill-0A7EA4">
   <img alt="主题" src="https://img.shields.io/badge/主题-Harness%20Engineering-1F9D55">
   <img alt="Ralph Loop" src="https://img.shields.io/badge/Ralph%20Loop-已内置%20Preset-7C3AED">
+  <img alt="Project Presets" src="https://img.shields.io/badge/Project%20Presets-4%20类任务-F97316">
   <img alt="Built with Codex" src="https://img.shields.io/badge/Built%20with-Codex-10B981">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-EAB308">
 </p>
 
 <p align="center">
-  <strong>把脆弱的 prompt 流程，升级成可恢复、可验证、可长期运行的 harness 工程。</strong>
+  <strong>把 prompt 驱动的脆弱流程，升级成可恢复、可验证、可长期迭代的 harness 工程。</strong>
 </p>
 
 <p align="center">
-  <a href="#简介">简介</a> ·
+  <a href="#为什么值得做">为什么值得做</a> ·
+  <a href="#你会得到什么">你会得到什么</a> ·
   <a href="#快速开始">快速开始</a> ·
+  <a href="#决策模型">决策模型</a> ·
   <a href="./CONTRIBUTING.md">贡献指南</a> ·
   <a href="./ROADMAP.md">路线图</a> ·
   <a href="./RELEASING.md">发布策略</a>
 </p>
 
-## 简介
+## 为什么值得做
 
-`harness-engineer` 是一个用于设计并脚手架化 Agent Harness 工程的 Codex skill。
+很多 agent 失败，根本不是模型不够强，而是 harness 不够好。
 
-它面向的任务通常具备这些特征：
+真实问题通常是：
 
-- 长时间运行
-- 可重复执行
-- 多步骤推进
-- 风险较高
-- 可能跨越多次 fresh-context 重启
+- 任务合同不清楚
+- 状态只存在聊天上下文里
+- 一轮里尝试做太多事
+- 没有 validator 或 validator 太弱
+- 脚手架太泛，和任务类型不匹配
 
-这个 skill 不把 prompt 当成全部系统，而是帮助 Codex：
+`harness-engineer` 就是为这个问题而生。  
+它的目标不是“再写一个大 prompt”，而是先帮 Codex 把系统搭对。
 
-- 先澄清执行合同
-- 选择最小安全拓扑
-- 区分稳定知识与可变状态
-- 生成真正的工程骨架
-- 外置可恢复状态
-- 在需要时直接生成 Ralph 风格循环骨架
-
-## 项目状态
-
-- 当前版本：[`v0.1.2`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.2)
-- 当前状态：loop preset、runner 分支和 project preset 都已通过回归
-- 当前范围：一个正式 skill、一个回滚快照、一个脚手架脚本
-- 演进方式：优先更新 doctrine，再更新脚手架脚本，最后才动 skill 触发逻辑
-
-## 核心亮点
+## 你会得到什么
 
 <table>
   <tr>
-    <td width="33%">
-      <strong>Harness Doctrine</strong><br>
-      把 OpenAI、Anthropic、Ralph、OpenHarness 和本地实践笔记里的方法论蒸馏进一个可复用 skill。
+    <td width="25%">
+      <strong>Doctrine 层</strong><br>
+      把 OpenAI、Anthropic、Ralph、OpenHarness 和本地实践里的方法论，蒸馏成可执行的 harness 设计规则。
     </td>
-    <td width="33%">
-      <strong>脚手架脚本</strong><br>
-      内置 Python 生成器，可直接产出 baseline 或 Ralph Loop 风格项目骨架。
+    <td width="25%">
+      <strong>Loop Presets</strong><br>
+      解决“怎么跑”：`baseline` 适合通用 harness，`ralph-loop` 适合多轮、可恢复、可中断的循环执行。
     </td>
-    <td width="33%">
-      <strong>Ralph Loop Preset</strong><br>
-      直接生成 <code>PROMPT.md</code>、<code>tasks.json</code>、<code>progress.txt</code>、日志、归档和 Ralph runner。
-    </td>
-    <td width="33%">
+    <td width="25%">
       <strong>Project Presets</strong><br>
-      为批处理、代码仓库、研究采集、UI 验证这几类任务提供默认结构偏置，不改变核心 loop 模型。
+      解决“跑什么类型的任务”：批处理、代码仓库、研究采集、UI 验证四类任务有各自默认骨架。
+    </td>
+    <td width="25%">
+      <strong>Scaffold Engine</strong><br>
+      一个模块化 Python 生成器，负责生成 docs、progress、manifest、validator 和 runner 占位模板。
     </td>
   </tr>
 </table>
 
-## Ralph Loop 一眼看懂
+## Architecture Poster
 
 <p align="center">
-  <img src="./assets/ralph-loop-flow.svg" alt="Ralph Loop flow" width="100%">
+  <img src="./assets/architecture-poster.svg" alt="Harness Engineer architecture poster" width="100%">
 </p>
 
-## 仓库结构
+## 项目状态
 
-```text
-harness-engineer-skill/
-├── assets/
-├── README.md
-├── README.zh-CN.md
-├── LICENSE
-├── versions.json
-├── skills/
-│   └── harness-engineer/
-│       ├── SKILL.md
-│       ├── agents/openai.yaml
-│       ├── references/
-│       └── scripts/init_harness_project.py
-└── snapshots/
-    └── harness-engineer-backup-20260408-161519/
-```
-
-## 包含版本
-
-| 版本 | 路径 | 说明 |
-|---|---|---|
-| 当前正式版 | [`skills/harness-engineer/`](./skills/harness-engineer/) | 已包含 Ralph Loop preset |
-| 历史快照 | [`snapshots/harness-engineer-backup-20260408-161519/`](./snapshots/harness-engineer-backup-20260408-161519/) | 加入 Ralph preset 前的备份版本 |
+- 当前版本：[`v0.1.2`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.2)
+- 当前状态：loop preset、runner 分支、project preset 已全部回归通过
+- 当前范围：一个正式 skill、一个历史快照、一个模块化脚手架引擎
+- 演进方式：先改 doctrine，再改 scaffold，最后才动触发逻辑
 
 ## 快速开始
 
@@ -146,25 +117,50 @@ Use $harness-engineer to clarify requirements and scaffold a robust harness proj
 - `Use $harness-engineer to refactor this prompt-only workflow into a recoverable harness.`
 - `Use $harness-engineer to scaffold a Ralph Loop project for a multi-pass remediation task.`
 
+## 决策模型
+
+这个 skill 有两个独立的控制面。
+
+### 1. Loop preset
+
+它回答的是：**这个 harness 应该怎么跑？**
+
+| Loop preset | 适用场景 | 典型结果 |
+|---|---|---|
+| `baseline` | 先搭一个通用 harness，暂时不需要多轮 loop 策略 | 通用 runner、validator、docs、progress |
+| `ralph-loop` | 工作需要一轮一轮推进，并且必须支持 fresh-context 重启 | `PROMPT.md`、`tasks.json`、batch plan、Ralph runner、循环退出约定 |
+
+### 2. Project preset
+
+它回答的是：**这类任务默认应该长什么样？**
+
+| Project preset | 最适合 | 默认附加结构 |
+|---|---|---|
+| `generic` | 泛化 scaffold | 不附加额外结构 |
+| `batch-processing` | OCR、转换、蒸馏、批量处理 | `input/`、`output/`、`artifacts/`、batch manifest、batch contract |
+| `repo-coding` | 多轮代码改造、修复、功能推进 | `features.json`、codebase patterns、current feature plan |
+| `research-collection` | 资料采集、证据收集、观点归纳 | `sources/`、`notes/`、`findings/`、`evidence/`、source manifest |
+| `ui-validation` | 浏览器可见行为、前端验收 | `screenshots/`、`traces/`、`verdicts/`、UI verdict 模板 |
+
 ## 脚手架脚本
 
-内置辅助脚本：
+内置模块化脚手架引擎：
 
 [`skills/harness-engineer/scripts/init_harness_project.py`](./skills/harness-engineer/scripts/init_harness_project.py)
 
-### 生成通用 harness 骨架
+### 示例：baseline
 
 ```powershell
 python .\skills\harness-engineer\scripts\init_harness_project.py .\output --project-name "Example Harness"
 ```
 
-### 生成 Ralph Loop 骨架
+### 示例：Ralph Loop + 批处理
 
 ```powershell
-python .\skills\harness-engineer\scripts\init_harness_project.py .\output --project-name "Example Ralph Harness" --preset ralph-loop
+python .\skills\harness-engineer\scripts\init_harness_project.py .\output --project-name "Example Ralph Batch" --preset ralph-loop --project-preset batch-processing --batch-size 5
 ```
 
-常用参数：
+### 常用参数
 
 - `--preset baseline|ralph-loop`
 - `--project-preset generic|batch-processing|repo-coding|research-collection|ui-validation`
@@ -175,9 +171,9 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 - `--with-failure-log`
 - `--with-archives`
 
-## Skill 会生成什么
+## 它到底会生成什么
 
-### Baseline 模式
+### Baseline scaffold
 
 - `AGENTS.md`
 - `config.yaml`
@@ -187,68 +183,90 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 - validator 占位脚本
 - summary 占位文件
 
-### Ralph Loop 模式
+### Ralph Loop scaffold
 
-- baseline 模式全部内容
+- baseline 全部内容
 - `PROMPT.md`
 - `tasks.json`
 - `docs/exec-plans/current-batch-plan.md`
 - `logs/failure-log.jsonl`
 - `archives/`
-- Ralph 风格 runner 模板
+- Ralph 风格 runner 占位模板
 
-### Project preset 叠加层
+### 任务家族叠加层
 
-- `generic`
-- `batch-processing`
-- `repo-coding`
-- `research-collection`
-- `ui-validation`
+- `batch-processing`：批次 manifest、输入输出目录、归档偏置
+- `repo-coding`：feature 状态、codebase patterns、当前 feature plan
+- `research-collection`：source manifest、证据目录、findings 文档
+- `ui-validation`：verdict 模板、截图目录、trace 目录
 
-可以把它理解成：loop preset 决定“怎么跑”，project preset 决定“这类任务默认长什么样”。
+## 仓库结构
+
+```text
+harness-engineer-skill/
+├── assets/                 # GitHub 首页视觉资源
+├── skills/
+│   └── harness-engineer/
+│       ├── SKILL.md
+│       ├── agents/openai.yaml
+│       ├── references/     # doctrine 与决策规则
+│       └── scripts/        # 模块化脚手架引擎
+├── snapshots/              # 回滚点与历史版本
+├── README.md
+├── README.zh-CN.md
+├── CONTRIBUTING.md
+├── ROADMAP.md
+├── RELEASING.md
+└── versions.json
+```
+
+## 包含版本
+
+| 版本 | 路径 | 说明 |
+|---|---|---|
+| 当前正式版 | [`skills/harness-engineer/`](./skills/harness-engineer/) | 已包含 Ralph Loop 与 project presets |
+| 历史快照 | [`snapshots/harness-engineer-backup-20260408-161519/`](./snapshots/harness-engineer-backup-20260408-161519/) | 加入 Ralph preset 之前的备份版本 |
 
 ## 理念来源
 
-这个 skill 是一个再蒸馏、再工程化的整合成果，主要来源于：
+这个 skill 是一个独立 synthesis，不是任何单一上游项目的官方下游发布。它的思想主要来自：
 
-- OpenAI 的 Harness Engineering 理念
+- OpenAI 的 Harness Engineering
 - Anthropic 关于长任务 harness 的文章
 - `snarktank/ralph`
 - `HKUDS/OpenHarness`
-- 本地实践笔记与方法论抽象
+- 本地真实使用过程中的实践蒸馏
 
-它不是上述任一项目的官方下游发布，而是基于这些来源形成的独立 synthesis。
+## 核心主张
 
-## 核心理念
-
-> 更强的 prompt 有帮助，但更好的 harness 才能长期存活。
+> 更强的 prompt 有帮助，但更好的 harness 才能真正长期存活。
 
 这个 skill 默认相信：
 
-- 长任务必须把状态外置
+- 长任务一定要把状态外置
 - validator 比“感觉差不多了”更重要
 - 拓扑应该尽量小
-- 模型变强后，脚手架应该允许被削减，而不是无限膨胀
+- 模型变强之后，脚手架应该允许被删减，而不是只会继续堆
+
+## 已做验证
+
+当前版本已经通过：
+
+- `quick_validate.py` 对 skill 的基础校验
+- 所有 scaffold 模块的 Python 编译检查
+- 以下 smoke test：
+  - baseline scaffold 生成
+  - Ralph Loop scaffold 生成
+  - 生成后的 validator 执行
+  - 生成后的 Python / PowerShell / Bash runner 执行
+  - 所有 project preset 叠加路径
 
 ## Attribution
 
 - 人类项目拥有者与维护者：仓库维护者
 - AI 实现与打包协助：OpenAI Codex
 
-当前采用 README 显式署名的方式标注 Codex 参与。如果你后面还想让提交历史也带上类似归属，可以在未来 commit 中加入 co-author trailer，或者使用专门的 bot / 账号身份。
-
-## 已做验证
-
-当前 skill 已通过：
-
-- `quick_validate.py` 对 skill 的基础校验
-- 脚手架脚本的 Python 编译检查
-- 以下 smoke test：
-  - baseline scaffold 生成
-  - Ralph Loop scaffold 生成
-  - 生成后的 validator 执行
-  - 生成后的 runner 执行
-  - 当前所有 project preset 的叠加路径
+目前采用 README 显式署名来标记 Codex 参与。如果后面你还想把这种归属延伸到提交历史，可以在后续 commit 中加入 co-author trailer，或者使用专门的 bot / 账号身份。
 
 ## 项目维护
 

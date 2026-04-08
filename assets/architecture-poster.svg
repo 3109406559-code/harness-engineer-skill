@@ -1,0 +1,50 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="28" fill="#08111F"/>
+  <rect x="28" y="28" width="1144" height="704" rx="24" fill="#0F1728" stroke="#22314A"/>
+
+  <text x="56" y="78" fill="#F8FAFC" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700">Harness Engineer</text>
+  <text x="56" y="116" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">A landing-page view of the skill's core system design</text>
+
+  <rect x="56" y="154" width="344" height="188" rx="20" fill="#101E36" stroke="#27466E"/>
+  <text x="82" y="194" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">1. Clarify the contract</text>
+  <text x="82" y="228" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">Inputs, outputs, success criteria,</text>
+  <text x="82" y="254" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">smallest verifiable unit, failure shape,</text>
+  <text x="82" y="280" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">runtime, and human checkpoints.</text>
+  <text x="82" y="320" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">No scaffolding before the contract is concrete.</text>
+
+  <rect x="428" y="154" width="344" height="188" rx="20" fill="#12261E" stroke="#1F6B54"/>
+  <text x="454" y="194" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">2. Pick the loop policy</text>
+  <text x="454" y="228" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">`baseline` for simple harnesses.</text>
+  <text x="454" y="254" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">`ralph-loop` for resumable, repeated</text>
+  <text x="454" y="280" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">passes over bounded work units.</text>
+  <text x="454" y="320" fill="#6EE7B7" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Loop preset answers: "How should this harness run?"</text>
+
+  <rect x="800" y="154" width="344" height="188" rx="20" fill="#2B1632" stroke="#7E22CE"/>
+  <text x="826" y="194" fill="#F5D0FE" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">3. Pick the task family</text>
+  <text x="826" y="228" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">`batch-processing`</text>
+  <text x="826" y="252" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">`repo-coding`</text>
+  <text x="826" y="276" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">`research-collection`</text>
+  <text x="826" y="300" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="18">`ui-validation`</text>
+  <text x="826" y="324" fill="#E9D5FF" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Project preset answers: "What should this work look like?"</text>
+
+  <rect x="56" y="386" width="1088" height="142" rx="20" fill="#161A26" stroke="#364152"/>
+  <text x="82" y="424" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">Generated structure</text>
+  <text x="82" y="458" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="18">AGENTS.md as a map · docs/ as durable knowledge · progress.txt as resumable state · scripts/ for runners and validators</text>
+  <text x="82" y="486" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="18">Optional tasks/features manifests · logs/ for evidence · archives/ when output preservation matters</text>
+  <text x="82" y="514" fill="#FDE68A" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Mechanical checks beat polite reminders. Validators gate loop progression.</text>
+
+  <rect x="56" y="564" width="520" height="128" rx="18" fill="#152132" stroke="#31577B"/>
+  <text x="82" y="602" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">Operating rule</text>
+  <text x="82" y="636" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="18">One pass should advance one smallest verifiable unit.</text>
+  <text x="82" y="664" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="18">Fresh context should restart from files, not chat memory.</text>
+
+  <rect x="624" y="564" width="520" height="128" rx="18" fill="#241A12" stroke="#9A670A"/>
+  <text x="650" y="602" fill="#FDE68A" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">Evolution rule</text>
+  <text x="650" y="636" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="18">Keep doctrine in references, keep components replaceable,</text>
+  <text x="650" y="664" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="18">and remove scaffolding when stronger models no longer need it.</text>
+
+  <path d="M400 248H428" stroke="#93C5FD" stroke-width="4"/>
+  <path d="M772 248H800" stroke="#A7F3D0" stroke-width="4"/>
+  <path d="M600 342V386" stroke="#CBD5E1" stroke-width="4"/>
+  <path d="M600 528V564" stroke="#FDE68A" stroke-width="4"/>
+</svg>
