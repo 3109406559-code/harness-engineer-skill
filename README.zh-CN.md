@@ -77,7 +77,7 @@
 
 ## 项目状态
 
-- 当前版本：[`v0.1.2`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.2)
+- 当前版本：[`v0.1.3`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.3)
 - 当前状态：loop preset、runner 分支、project preset 已全部回归通过
 - 当前范围：一个正式 skill、一个历史快照、一个模块化脚手架引擎
 - 演进方式：先改 doctrine，再改 scaffold，最后才动触发逻辑
