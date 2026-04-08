@@ -129,7 +129,7 @@ The visual language mirrors the skill itself:
 
 ## Project status
 
-- Current release: [`v0.1.3`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.3)
+- Current public state: [`main`](https://github.com/3109406559-code/harness-engineer-skill/tree/main)
 - Stability: validated across loop presets, runner variants, and all current project presets
 - Scope: one current skill, one historical snapshot, one modular scaffold engine
 - Evolution model: doctrine first, scaffold second, trigger text last
