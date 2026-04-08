@@ -14,6 +14,7 @@ from pathlib import Path
 from scaffold_builder import create_scaffold
 from scaffold_config import (
     PRESET_CHOICES,
+    PROJECT_PRESET_CHOICES,
     RUNNER_CHOICES,
     TOPOLOGY_CHOICES,
     default_runner_for_preset,
@@ -30,6 +31,12 @@ def parse_args() -> argparse.Namespace:
         choices=PRESET_CHOICES,
         default="baseline",
         help="Scaffold profile to generate",
+    )
+    parser.add_argument(
+        "--project-preset",
+        choices=PROJECT_PRESET_CHOICES,
+        default="generic",
+        help="Task-oriented scaffold flavor to generate",
     )
     parser.add_argument(
         "--topology",
@@ -80,6 +87,7 @@ def main() -> None:
         output_dir=output_dir,
         project_name=args.project_name,
         preset=args.preset,
+        project_preset=args.project_preset,
         topology=args.topology,
         runner=runner,
         batch_size=args.batch_size,

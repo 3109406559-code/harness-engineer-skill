@@ -51,8 +51,8 @@ Instead of treating the prompt as the whole system, the skill helps Codex:
 
 ## Project Status
 
-- Current release: [`v0.1.0`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.0)
-- Stability: usable and validated for baseline and Ralph Loop scaffolds
+- Current release: [`v0.1.2`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.2)
+- Stability: usable and validated for loop presets, runner variants, and project presets
 - Scope: one production-ready skill, one rollback snapshot, and one scaffold helper
 - Evolution model: doctrine-first updates, script updates second, skill trigger logic last
 
@@ -71,6 +71,10 @@ Instead of treating the prompt as the whole system, the skill helps Codex:
     <td width="33%">
       <strong>Ralph Loop Preset</strong><br>
       Generates a ready-to-customize loop skeleton with <code>PROMPT.md</code>, <code>tasks.json</code>, <code>progress.txt</code>, logs, archives, and a Ralph runner.
+    </td>
+    <td width="33%">
+      <strong>Project Presets</strong><br>
+      Adds task-family overlays for batch processing, repo coding, research collection, and UI validation without changing the core loop model.
     </td>
   </tr>
 </table>
@@ -163,6 +167,7 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 Useful flags:
 
 - `--preset baseline|ralph-loop`
+- `--project-preset generic|batch-processing|repo-coding|research-collection|ui-validation`
 - `--topology`
 - `--runner`
 - `--batch-size`
@@ -191,6 +196,16 @@ Useful flags:
 - `logs/failure-log.jsonl`
 - `archives/`
 - a Ralph-style runner template
+
+### Project preset overlays
+
+- `generic`
+- `batch-processing`
+- `repo-coding`
+- `research-collection`
+- `ui-validation`
+
+Project presets control the default shape of the work. Loop presets control how the work advances.
 
 ## Design Sources
 
@@ -233,6 +248,7 @@ The current skill has been validated with:
   - Ralph Loop scaffold generation
   - generated validator execution
   - generated runner execution
+  - project preset overlays for all current task families
 
 ## Project Maintenance
 

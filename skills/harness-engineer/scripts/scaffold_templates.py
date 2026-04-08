@@ -164,7 +164,7 @@ def validator_template(project_name: str, preset: str, plan_filename: str) -> st
     )
 
 
-def build_agents_md(project_name: str, topology: str, runner: str, preset: str) -> str:
+def build_agents_md(project_name: str, topology: str, runner: str, preset: str, project_preset: str) -> str:
     preset_lines = ""
     directory_lines = ""
     if preset == "ralph-loop":
@@ -199,6 +199,7 @@ def build_agents_md(project_name: str, topology: str, runner: str, preset: str) 
         - Selected topology: `{topology}`
         - Runner type: `{runner}`
         - Preset: `{preset}`
+        - Project preset: `{project_preset}`
 
         ## Rules
         - Keep this file short and navigational.
@@ -223,12 +224,13 @@ def build_agents_md(project_name: str, topology: str, runner: str, preset: str) 
     )
 
 
-def build_config(project_name: str, topology: str, runner: str, preset: str, batch_size: int | None) -> str:
+def build_config(project_name: str, topology: str, runner: str, preset: str, project_preset: str, batch_size: int | None) -> str:
     lines = [
         f'project_name: "{project_name}"',
         f'topology: "{topology}"',
         f'runner: "{runner}"',
         f'preset: "{preset}"',
+        f'project_preset: "{project_preset}"',
     ]
     if batch_size:
         lines.append(f"batch_size: {batch_size}")
@@ -281,7 +283,37 @@ def build_progress(preset: str) -> str:
     )
 
 
-def build_prd(project_name: str, preset: str) -> str:
+def build_prd(project_name: str, preset: str, project_preset: str) -> str:
+    project_preset_lines = ""
+    if project_preset == "batch-processing":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Batch Unit
+            [Define one batch, one item, or one shard that the worker may advance.]
+            """
+        )
+    elif project_preset == "repo-coding":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Code Change Unit
+            [Define one feature, one story, or one remediation slice per pass.]
+            """
+        )
+    elif project_preset == "research-collection":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Evidence Unit
+            [Define one source, one claim set, or one synthesis unit per pass.]
+            """
+        )
+    elif project_preset == "ui-validation":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Browser Acceptance
+            [Define the browser-visible flow and the evidence needed to accept it.]
+            """
+        )
+
     preset_lines = ""
     if preset == "ralph-loop":
         preset_lines = textwrap.dedent(
@@ -313,12 +345,48 @@ def build_prd(project_name: str, preset: str) -> str:
         ## Success Criteria
         [Define what the validator must be able to prove.]
 
+        {project_preset_lines.rstrip()}
+
         {preset_lines.rstrip()}
         """
     )
 
 
-def build_architecture(project_name: str, topology: str, runner: str, preset: str) -> str:
+def build_architecture(project_name: str, topology: str, runner: str, preset: str, project_preset: str) -> str:
+    project_preset_lines = ""
+    if project_preset == "batch-processing":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Batch-processing Notes
+            - Prefer manifests, archives, and per-item or per-batch retry state.
+            - Keep summarization explicit at the end of the run.
+            """
+        )
+    elif project_preset == "repo-coding":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Repo-coding Notes
+            - One pass should usually map to one feature, bug, or remediation slice.
+            - Preserve codebase patterns in durable docs or structured feature state.
+            """
+        )
+    elif project_preset == "research-collection":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## Research-collection Notes
+            - Evidence storage matters as much as synthesis.
+            - Distinguish raw sources, notes, and validated findings.
+            """
+        )
+    elif project_preset == "ui-validation":
+        project_preset_lines = textwrap.dedent(
+            """\
+            ## UI-validation Notes
+            - Browser-visible behavior should be verified with explicit evidence.
+            - Screenshots, traces, or verdict artifacts should be part of the normal flow.
+            """
+        )
+
     preset_lines = ""
     if preset == "ralph-loop":
         preset_lines = textwrap.dedent(
@@ -352,6 +420,11 @@ def build_architecture(project_name: str, topology: str, runner: str, preset: st
 
         ## Preset
         `{preset}`
+
+        ## Project preset
+        `{project_preset}`
+
+        {project_preset_lines.rstrip()}
 
         {preset_lines.rstrip()}
 
@@ -436,8 +509,18 @@ def build_failure_log_stub() -> str:
     return ""
 
 
-def build_prompt(project_name: str, preset: str) -> str:
+def build_prompt(project_name: str, preset: str, project_preset: str) -> str:
     if preset == "ralph-loop":
+        extra_guardrails = ""
+        if project_preset == "ui-validation":
+            extra_guardrails = "- Treat browser-visible evidence as required, not optional.\n"
+        elif project_preset == "research-collection":
+            extra_guardrails = "- Preserve raw evidence and synthesized findings separately.\n"
+        elif project_preset == "batch-processing":
+            extra_guardrails = "- Respect batch boundaries and retry policy.\n"
+        elif project_preset == "repo-coding":
+            extra_guardrails = "- Keep code changes scoped to one feature or remediation unit.\n"
+
         return textwrap.dedent(
             f"""\
             # Ralph Worker Prompt
@@ -461,6 +544,7 @@ def build_prompt(project_name: str, preset: str) -> str:
             ## Guardrails
             - Use file state, not chat memory, as the source of truth.
             - Leave the project in a clean restartable state before exiting.
+            {extra_guardrails.rstrip()}
             - Stop if validation fails or if the task contract is unclear.
             """
         )

@@ -22,6 +22,7 @@ Build harness projects that are recoverable, observable, and mechanically enforc
    - Read [references/topology-selection.md](./references/topology-selection.md) if the loop structure is unclear.
    - Read [references/scaffold-spec.md](./references/scaffold-spec.md) before creating the project skeleton.
    - Read [references/ralph-loop.md](./references/ralph-loop.md) when the user wants a Ralph-style long-running loop.
+   - Read [references/project-presets.md](./references/project-presets.md) when the task shape matters more than the loop shape.
    - Read [references/upgrade-guide.md](./references/upgrade-guide.md) when evolving this skill or when the generated harness should be easy to extend or open-source.
 
 4. Choose the smallest topology that can safely do the job.
@@ -34,6 +35,7 @@ Build harness projects that are recoverable, observable, and mechanically enforc
 5. Scaffold the project.
    - Prefer running [scripts/init_harness_project.py](./scripts/init_harness_project.py) to create the baseline directory tree and placeholder files.
    - Use `--preset ralph-loop` when the project should advance by repeated loop passes with resumable state and a dedicated worker prompt.
+   - Use `--project-preset` to bias the scaffold toward the task family: batch processing, repo coding, research collection, or UI validation.
    - After generation, replace placeholders with task-specific content instead of piling everything into `AGENTS.md`.
    - Keep `AGENTS.md` as a directory map and behavior contract, not a dumping ground.
    - Put durable knowledge in `docs/`, machine-written state in JSON or YAML when mutation matters, and operator-visible status in `progress.txt`.
@@ -75,6 +77,7 @@ python /path/to/harness-engineer/scripts/init_harness_project.py <output-dir> --
 Useful flags include:
 
 - `--preset`
+- `--project-preset`
 - `--topology`
 - `--runner`
 - `--with-features-file`
@@ -88,4 +91,5 @@ Useful flags include:
 - [references/topology-selection.md](./references/topology-selection.md): choose runner and agent shape
 - [references/scaffold-spec.md](./references/scaffold-spec.md): baseline project structure and file roles
 - [references/ralph-loop.md](./references/ralph-loop.md): how and when to scaffold a Ralph-style loop
+- [references/project-presets.md](./references/project-presets.md): task-family presets and what they add to the scaffold
 - [references/upgrade-guide.md](./references/upgrade-guide.md): how to extend the skill and generated harnesses without breaking the core design

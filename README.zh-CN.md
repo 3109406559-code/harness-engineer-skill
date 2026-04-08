@@ -51,8 +51,8 @@
 
 ## 项目状态
 
-- 当前版本：[`v0.1.0`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.0)
-- 当前状态：baseline 与 Ralph Loop 两类 scaffold 已可稳定使用
+- 当前版本：[`v0.1.2`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.2)
+- 当前状态：loop preset、runner 分支和 project preset 都已通过回归
 - 当前范围：一个正式 skill、一个回滚快照、一个脚手架脚本
 - 演进方式：优先更新 doctrine，再更新脚手架脚本，最后才动 skill 触发逻辑
 
@@ -71,6 +71,10 @@
     <td width="33%">
       <strong>Ralph Loop Preset</strong><br>
       直接生成 <code>PROMPT.md</code>、<code>tasks.json</code>、<code>progress.txt</code>、日志、归档和 Ralph runner。
+    </td>
+    <td width="33%">
+      <strong>Project Presets</strong><br>
+      为批处理、代码仓库、研究采集、UI 验证这几类任务提供默认结构偏置，不改变核心 loop 模型。
     </td>
   </tr>
 </table>
@@ -163,6 +167,7 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 常用参数：
 
 - `--preset baseline|ralph-loop`
+- `--project-preset generic|batch-processing|repo-coding|research-collection|ui-validation`
 - `--topology`
 - `--runner`
 - `--batch-size`
@@ -191,6 +196,16 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 - `logs/failure-log.jsonl`
 - `archives/`
 - Ralph 风格 runner 模板
+
+### Project preset 叠加层
+
+- `generic`
+- `batch-processing`
+- `repo-coding`
+- `research-collection`
+- `ui-validation`
+
+可以把它理解成：loop preset 决定“怎么跑”，project preset 决定“这类任务默认长什么样”。
 
 ## 理念来源
 
@@ -233,6 +248,7 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
   - Ralph Loop scaffold 生成
   - 生成后的 validator 执行
   - 生成后的 runner 执行
+  - 当前所有 project preset 的叠加路径
 
 ## 项目维护
 

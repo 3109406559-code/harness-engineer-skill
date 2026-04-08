@@ -41,6 +41,7 @@ Future versions can add:
 
 - alternative scaffold profiles
 - richer Ralph loop presets
+- narrower or stronger project presets
 - richer validators
 - browser or app-specific verification bundles
 - project-type presets

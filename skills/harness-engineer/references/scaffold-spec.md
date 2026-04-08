@@ -132,6 +132,24 @@ Good defaults:
 - logs directory present from day one
 - no evaluator unless justified
 
+## Project presets
+
+Project presets are task-family overlays.
+
+They should:
+
+- add only the extra structure that is repeatedly useful for that task family
+- avoid changing the core harness doctrine
+- remain orthogonal to the loop preset
+
+Current task-family overlays:
+
+- `generic`
+- `batch-processing`
+- `repo-coding`
+- `research-collection`
+- `ui-validation`
+
 Ralph-specific defaults:
 
 - `tasks.json` present from day one

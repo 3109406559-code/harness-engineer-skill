@@ -4,6 +4,13 @@ from __future__ import annotations
 import os
 
 PRESET_CHOICES = ["baseline", "ralph-loop"]
+PROJECT_PRESET_CHOICES = [
+    "generic",
+    "batch-processing",
+    "repo-coding",
+    "research-collection",
+    "ui-validation",
+]
 TOPOLOGY_CHOICES = [
     "runner-worker-validator",
     "initializer-runner-worker-validator",
