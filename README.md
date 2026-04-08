@@ -1,6 +1,10 @@
 # Harness Engineer
 
 <p align="center">
+  <img src="./assets/logo-lockup.svg" alt="Harness Engineer logo lockup" width="72%">
+</p>
+
+<p align="center">
   <img src="./assets/banner.svg" alt="Harness Engineer banner" width="100%">
 </p>
 
@@ -23,9 +27,11 @@
 
 <p align="center">
   <a href="#why-it-matters">Why it matters</a> ·
+  <a href="#before-vs-after">Before vs After</a> ·
   <a href="#what-you-get">What you get</a> ·
-  <a href="#quick-start">Quick start</a> ·
-  <a href="#decision-model">Decision model</a> ·
+  <a href="#project-preset-gallery">Project Preset Gallery</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#decision-model">Decision Model</a> ·
   <a href="./CONTRIBUTING.md">Contributing</a> ·
   <a href="./ROADMAP.md">Roadmap</a> ·
   <a href="./RELEASING.md">Releasing</a>
@@ -35,15 +41,26 @@
 
 Most agent failures are not model failures. They are harness failures.
 
-What breaks in practice:
+What actually breaks in practice:
 
-- the task is too vague
+- the execution contract is vague
 - state lives only in chat memory
-- the loop tries to do too much in one pass
+- a loop tries to do too much in one pass
 - validation is weak or missing
-- the scaffold is too generic to fit the actual work
+- the scaffold is too generic for the real task
 
-`harness-engineer` exists to solve exactly that problem. It helps Codex design a harness before it starts improvising one.
+`harness-engineer` exists to fix that. It helps Codex design the harness before it improvises one.
+
+## Before vs After
+
+<p align="center">
+  <img src="./assets/before-after.svg" alt="Before and after harness comparison" width="100%">
+</p>
+
+The shift is the whole point of the project:
+
+- **Before**: one giant prompt, hidden state, fuzzy boundaries, weak or missing validators
+- **After**: explicit docs, file-based state, bounded loop passes, validator-first progression
 
 ## What you get
 
@@ -51,28 +68,64 @@ What breaks in practice:
   <tr>
     <td width="25%">
       <strong>Doctrine Layer</strong><br>
-      Practical harness engineering principles distilled from OpenAI, Anthropic, Ralph, OpenHarness, and hands-on local practice.
+      Practical harness engineering guidance distilled from OpenAI, Anthropic, Ralph, OpenHarness, and hands-on local practice.
     </td>
     <td width="25%">
       <strong>Loop Presets</strong><br>
-      Choose how the system runs: <code>baseline</code> for straightforward harnesses, <code>ralph-loop</code> for resumable multi-pass execution.
+      Control how the harness runs: <code>baseline</code> for general scaffolds, <code>ralph-loop</code> for resumable multi-pass execution.
     </td>
     <td width="25%">
       <strong>Project Presets</strong><br>
-      Choose what the work looks like: batch processing, repo coding, research collection, or UI validation.
+      Control the work shape: batch processing, repo coding, research collection, or UI validation.
     </td>
     <td width="25%">
       <strong>Scaffold Engine</strong><br>
-      A modular Python generator that produces docs, progress state, manifests, validators, and runner placeholders.
+      A modular Python generator that emits docs, progress state, manifests, validators, and runner placeholders.
     </td>
   </tr>
 </table>
+
+## Visual identity
+
+<p align="center">
+  <img src="./assets/logo-mark.svg" alt="Harness Engineer logo mark" width="140">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./assets/icon-square.svg" alt="Harness Engineer square icon" width="140">
+</p>
+
+The visual language mirrors the skill itself:
+
+- deep blue for structure and systems
+- green for validated forward motion
+- violet for loop orchestration and preset logic
+- amber for controlled evolution and caution points
 
 ## Architecture poster
 
 <p align="center">
   <img src="./assets/architecture-poster.svg" alt="Harness Engineer architecture poster" width="100%">
 </p>
+
+## Project Preset Gallery
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="./assets/preset-batch-processing.svg" alt="batch-processing preset card" width="100%">
+    </td>
+    <td width="50%">
+      <img src="./assets/preset-repo-coding.svg" alt="repo-coding preset card" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="./assets/preset-research-collection.svg" alt="research-collection preset card" width="100%">
+    </td>
+    <td width="50%">
+      <img src="./assets/preset-ui-validation.svg" alt="ui-validation preset card" width="100%">
+    </td>
+  </tr>
+</table>
 
 ## Project status
 
@@ -116,20 +169,20 @@ Typical prompts:
 - `Use $harness-engineer to refactor this prompt-only workflow into a recoverable harness.`
 - `Use $harness-engineer to scaffold a Ralph Loop project for a multi-pass remediation task.`
 
-## The decision model
+## Decision model
 
 The skill has two independent control surfaces.
 
-### 1. Loop preset
+### Loop preset
 
 This answers: **How should the harness run?**
 
 | Loop preset | Use it when | Typical result |
 |---|---|---|
-| `baseline` | One scaffolded harness is enough and no repeated loop policy is needed yet | simple runner, validator, docs, progress file |
-| `ralph-loop` | Work advances in repeated passes and must survive fresh-context restarts | `PROMPT.md`, `tasks.json`, batch plan, Ralph runner, loop contract |
+| `baseline` | one scaffolded harness is enough and no explicit repeated loop policy is needed yet | simple runner, validator, docs, progress file |
+| `ralph-loop` | work advances in repeated passes and must survive fresh-context restarts | `PROMPT.md`, `tasks.json`, batch plan, Ralph runner, loop contract |
 
-### 2. Project preset
+### Project preset
 
 This answers: **What shape should this work take?**
 
@@ -203,7 +256,7 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 
 ```text
 harness-engineer-skill/
-├── assets/                 # visual landing-page resources
+├── assets/                 # landing-page visuals and icon system
 ├── skills/
 │   └── harness-engineer/
 │       ├── SKILL.md

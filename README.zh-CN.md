@@ -1,6 +1,10 @@
 # Harness Engineer
 
 <p align="center">
+  <img src="./assets/logo-lockup.svg" alt="Harness Engineer logo lockup" width="72%">
+</p>
+
+<p align="center">
   <img src="./assets/banner.svg" alt="Harness Engineer banner" width="100%">
 </p>
 
@@ -18,12 +22,14 @@
 </p>
 
 <p align="center">
-  <strong>把 prompt 驱动的脆弱流程，升级成可恢复、可验证、可长期迭代的 harness 工程。</strong>
+  <strong>把 prompt 堆叠出来的脆弱流程，升级成可恢复、可验证、可长期演进的 harness 工程。</strong>
 </p>
 
 <p align="center">
   <a href="#为什么值得做">为什么值得做</a> ·
+  <a href="#前后对比">前后对比</a> ·
   <a href="#你会得到什么">你会得到什么</a> ·
+  <a href="#project-preset-画廊">Project Preset 画廊</a> ·
   <a href="#快速开始">快速开始</a> ·
   <a href="#决策模型">决策模型</a> ·
   <a href="./CONTRIBUTING.md">贡献指南</a> ·
@@ -33,18 +39,29 @@
 
 ## 为什么值得做
 
-很多 agent 失败，根本不是模型不够强，而是 harness 不够好。
+很多 agent 失败，并不是模型本身失败，而是 harness 设计失败。
 
-真实问题通常是：
+真正常见的问题是：
 
-- 任务合同不清楚
-- 状态只存在聊天上下文里
-- 一轮里尝试做太多事
-- 没有 validator 或 validator 太弱
-- 脚手架太泛，和任务类型不匹配
+- 执行合同不清楚
+- 状态只存在对话上下文里
+- 一轮里想做太多事
+- 没有 validator，或者 validator 太弱
+- 脚手架过于泛化，和任务类型不贴合
 
-`harness-engineer` 就是为这个问题而生。  
-它的目标不是“再写一个大 prompt”，而是先帮 Codex 把系统搭对。
+`harness-engineer` 的价值就是解决这个问题：  
+在 Codex 开始“临场 improvising” 之前，先把 harness 设计好。
+
+## 前后对比
+
+<p align="center">
+  <img src="./assets/before-after.svg" alt="Before and after harness comparison" width="100%">
+</p>
+
+这张图表达的是这个 skill 想完成的核心转变：
+
+- **Before**：一个大 prompt，状态藏在聊天里，边界模糊，done 标准靠主观感觉
+- **After**：显式文档、文件状态、可恢复 loop、validator-first 推进
 
 ## 你会得到什么
 
@@ -52,7 +69,7 @@
   <tr>
     <td width="25%">
       <strong>Doctrine 层</strong><br>
-      把 OpenAI、Anthropic、Ralph、OpenHarness 和本地实践里的方法论，蒸馏成可执行的 harness 设计规则。
+      把 OpenAI、Anthropic、Ralph、OpenHarness 与本地实践笔记里的方法论，蒸馏成可执行的 harness 规则。
     </td>
     <td width="25%">
       <strong>Loop Presets</strong><br>
@@ -60,7 +77,7 @@
     </td>
     <td width="25%">
       <strong>Project Presets</strong><br>
-      解决“跑什么类型的任务”：批处理、代码仓库、研究采集、UI 验证四类任务有各自默认骨架。
+      解决“跑什么类型的任务”：批处理、代码仓库、研究采集、UI 验证四类任务各自带有默认结构偏置。
     </td>
     <td width="25%">
       <strong>Scaffold Engine</strong><br>
@@ -69,16 +86,52 @@
   </tr>
 </table>
 
+## 视觉体系
+
+<p align="center">
+  <img src="./assets/logo-mark.svg" alt="Harness Engineer logo mark" width="140">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./assets/icon-square.svg" alt="Harness Engineer square icon" width="140">
+</p>
+
+这套视觉语言和 skill 的结构是一致的：
+
+- 深蓝：系统、结构、边界
+- 绿色：通过验证后的前进
+- 紫色：loop 与 preset 的调度层
+- 琥珀：需要被谨慎控制的演化与风险点
+
 ## Architecture Poster
 
 <p align="center">
   <img src="./assets/architecture-poster.svg" alt="Harness Engineer architecture poster" width="100%">
 </p>
 
+## Project Preset 画廊
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="./assets/preset-batch-processing.svg" alt="batch-processing preset card" width="100%">
+    </td>
+    <td width="50%">
+      <img src="./assets/preset-repo-coding.svg" alt="repo-coding preset card" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="./assets/preset-research-collection.svg" alt="research-collection preset card" width="100%">
+    </td>
+    <td width="50%">
+      <img src="./assets/preset-ui-validation.svg" alt="ui-validation preset card" width="100%">
+    </td>
+  </tr>
+</table>
+
 ## 项目状态
 
 - 当前版本：[`v0.1.3`](https://github.com/3109406559-code/harness-engineer-skill/releases/tag/v0.1.3)
-- 当前状态：loop preset、runner 分支、project preset 已全部回归通过
+- 当前状态：loop preset、runner 分支、project preset 已全部通过回归
 - 当前范围：一个正式 skill、一个历史快照、一个模块化脚手架引擎
 - 演进方式：先改 doctrine，再改 scaffold，最后才动触发逻辑
 
@@ -119,7 +172,7 @@ Use $harness-engineer to clarify requirements and scaffold a robust harness proj
 
 ## 决策模型
 
-这个 skill 有两个独立的控制面。
+这个 skill 有两个彼此独立的控制面。
 
 ### 1. Loop preset
 
@@ -127,7 +180,7 @@ Use $harness-engineer to clarify requirements and scaffold a robust harness proj
 
 | Loop preset | 适用场景 | 典型结果 |
 |---|---|---|
-| `baseline` | 先搭一个通用 harness，暂时不需要多轮 loop 策略 | 通用 runner、validator、docs、progress |
+| `baseline` | 先搭一个通用 harness，还不需要显式多轮 loop 策略 | 通用 runner、validator、docs、progress |
 | `ralph-loop` | 工作需要一轮一轮推进，并且必须支持 fresh-context 重启 | `PROMPT.md`、`tasks.json`、batch plan、Ralph runner、循环退出约定 |
 
 ### 2. Project preset
@@ -204,7 +257,7 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 
 ```text
 harness-engineer-skill/
-├── assets/                 # GitHub 首页视觉资源
+├── assets/                 # GitHub 首页视觉资源与图标体系
 ├── skills/
 │   └── harness-engineer/
 │       ├── SKILL.md
@@ -229,13 +282,13 @@ harness-engineer-skill/
 
 ## 理念来源
 
-这个 skill 是一个独立 synthesis，不是任何单一上游项目的官方下游发布。它的思想主要来自：
+这个仓库是一个独立 synthesis，不是任何单一上游项目的官方下游发布。它主要来自：
 
 - OpenAI 的 Harness Engineering
 - Anthropic 关于长任务 harness 的文章
 - `snarktank/ralph`
 - `HKUDS/OpenHarness`
-- 本地真实使用过程中的实践蒸馏
+- 本地真实实践中的方法论蒸馏
 
 ## 核心主张
 
@@ -246,7 +299,7 @@ harness-engineer-skill/
 - 长任务一定要把状态外置
 - validator 比“感觉差不多了”更重要
 - 拓扑应该尽量小
-- 模型变强之后，脚手架应该允许被删减，而不是只会继续堆
+- 模型变强之后，脚手架应该允许被删减，而不是继续无上限堆叠
 
 ## 已做验证
 

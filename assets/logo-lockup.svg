@@ -1,0 +1,14 @@
+<svg width="920" height="260" viewBox="0 0 920 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="920" height="260" rx="32" fill="#08111F"/>
+  <rect x="26" y="26" width="868" height="208" rx="28" fill="#111827" stroke="#22314A"/>
+  <rect x="54" y="52" width="156" height="156" rx="34" fill="#0B1324"/>
+  <rect x="68" y="66" width="128" height="128" rx="28" fill="#111C32" stroke="#2B476D"/>
+  <circle cx="132" cy="130" r="38" fill="#132A3F" stroke="#7C3AED" stroke-width="6"/>
+  <circle cx="132" cy="130" r="17" fill="#10B981"/>
+  <path d="M103 98V162" stroke="#F8FAFC" stroke-width="10" stroke-linecap="round"/>
+  <path d="M161 98V162" stroke="#F8FAFC" stroke-width="10" stroke-linecap="round"/>
+  <path d="M103 130H161" stroke="#F8FAFC" stroke-width="10" stroke-linecap="round"/>
+  <text x="248" y="108" fill="#F8FAFC" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">Harness Engineer</text>
+  <text x="248" y="146" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Codex skill for durable agent harness design</text>
+  <text x="248" y="186" fill="#D1D5DB" font-family="Segoe UI, Arial, sans-serif" font-size="18">Loop presets, project presets, validator-first scaffolds, and upgrade-friendly doctrine.</text>
+</svg>
