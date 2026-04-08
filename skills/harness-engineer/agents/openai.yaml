@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness Engineer"
+  short_description: "Design and scaffold agent harness projects"
+  default_prompt: "Use $harness-engineer to clarify requirements and scaffold a robust harness project."

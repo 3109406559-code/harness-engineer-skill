@@ -1,0 +1,21 @@
+{
+  "current": {
+    "path": "skills/harness-engineer",
+    "name": "harness-engineer",
+    "notes": [
+      "Current skill release",
+      "Includes the Ralph Loop preset",
+      "Contains scaffold script, doctrine references, and openai metadata"
+    ]
+  },
+  "snapshots": [
+    {
+      "path": "snapshots/harness-engineer-backup-20260408-161519",
+      "name": "harness-engineer-backup-20260408-161519",
+      "notes": [
+        "Backup before the Ralph Loop preset upgrade",
+        "Included for rollback and historical comparison"
+      ]
+    }
+  ]
+}
