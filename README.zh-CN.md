@@ -28,8 +28,10 @@
 <p align="center">
   <a href="#为什么值得做">为什么值得做</a> ·
   <a href="#前后对比">前后对比</a> ·
+  <a href="#3-步工作流">3 步工作流</a> ·
   <a href="#你会得到什么">你会得到什么</a> ·
   <a href="#project-preset-画廊">Project Preset 画廊</a> ·
+  <a href="#examples--use-cases">Examples</a> ·
   <a href="#快速开始">快速开始</a> ·
   <a href="#决策模型">决策模型</a> ·
   <a href="./CONTRIBUTING.md">贡献指南</a> ·
@@ -62,6 +64,25 @@
 
 - **Before**：一个大 prompt，状态藏在聊天里，边界模糊，done 标准靠主观感觉
 - **After**：显式文档、文件状态、可恢复 loop、validator-first 推进
+
+## 3 步工作流
+
+<table>
+  <tr>
+    <td width="33%">
+      <strong>1. 先冻结合同</strong><br>
+      先明确输入、输出、成功标准、最小可验证单元，以及失败的定义，再去搭脚手架。
+    </td>
+    <td width="33%">
+      <strong>2. 再选结构</strong><br>
+      用 loop preset 决定运行方式，用 project preset 决定任务家族结构。
+    </td>
+    <td width="33%">
+      <strong>3. 最后生成并验证</strong><br>
+      生成文件、外置状态、跑 validator，让整个 harness 能在 fresh-context 下继续跑。
+    </td>
+  </tr>
+</table>
 
 ## 你会得到什么
 
@@ -127,6 +148,99 @@
     </td>
   </tr>
 </table>
+
+## Examples / Use Cases
+
+<details>
+<summary><strong>Example 1：批量 OCR 与增强</strong></summary>
+
+调用方式：
+
+```text
+Use $harness-engineer to scaffold a Ralph Loop project for OCR and post-processing on a folder of scanned documents.
+```
+
+推荐组合：
+
+- `--preset ralph-loop`
+- `--project-preset batch-processing`
+
+会得到：
+
+- 按批次推进的 loop
+- `tasks.json` 维护可变状态
+- input/output/artifacts 目录
+- 适合归档最终产物的结构
+
+</details>
+
+<details>
+<summary><strong>Example 2：长周期代码治理</strong></summary>
+
+调用方式：
+
+```text
+Use $harness-engineer to design a recoverable harness for fixing one codebase issue per pass.
+```
+
+推荐组合：
+
+- `--preset ralph-loop`
+- `--project-preset repo-coding`
+
+会得到：
+
+- feature 或 task 状态文件
+- codebase patterns 记忆层
+- scoped feature plan
+- 适合一轮一轮修复的 runner + validator 流程
+
+</details>
+
+<details>
+<summary><strong>Example 3：研究采集与归纳</strong></summary>
+
+调用方式：
+
+```text
+Use $harness-engineer to scaffold a research harness that gathers sources, stores evidence, and synthesizes findings over multiple passes.
+```
+
+推荐组合：
+
+- `--preset baseline` 或 `--preset ralph-loop`
+- `--project-preset research-collection`
+
+会得到：
+
+- source manifest
+- evidence 与 findings 分层
+- 明确的 research protocol
+- 避免把原始资料和最终结论混在一起
+
+</details>
+
+<details>
+<summary><strong>Example 4：带浏览器证据的 UI 验收</strong></summary>
+
+调用方式：
+
+```text
+Use $harness-engineer to scaffold a harness for browser-visible feature work with screenshot-based validation.
+```
+
+推荐组合：
+
+- `--preset ralph-loop`
+- `--project-preset ui-validation`
+
+会得到：
+
+- screenshots / traces / verdicts 目录
+- UI validation 参考文档
+- 针对浏览器证据的更强 prompt guardrails
+
+</details>
 
 ## 项目状态
 

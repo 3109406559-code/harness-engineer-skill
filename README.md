@@ -28,8 +28,10 @@
 <p align="center">
   <a href="#why-it-matters">Why it matters</a> ·
   <a href="#before-vs-after">Before vs After</a> ·
+  <a href="#how-it-works-in-3-steps">How it works</a> ·
   <a href="#what-you-get">What you get</a> ·
   <a href="#project-preset-gallery">Project Preset Gallery</a> ·
+  <a href="#examples--use-cases">Examples</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#decision-model">Decision Model</a> ·
   <a href="./CONTRIBUTING.md">Contributing</a> ·
@@ -61,6 +63,25 @@ The shift is the whole point of the project:
 
 - **Before**: one giant prompt, hidden state, fuzzy boundaries, weak or missing validators
 - **After**: explicit docs, file-based state, bounded loop passes, validator-first progression
+
+## How it works in 3 steps
+
+<table>
+  <tr>
+    <td width="33%">
+      <strong>1. Freeze the contract</strong><br>
+      Clarify inputs, outputs, success criteria, the smallest verifiable unit, and what counts as failure before scaffolding anything.
+    </td>
+    <td width="33%">
+      <strong>2. Choose the shape</strong><br>
+      Pick a loop preset for runtime behavior and a project preset for task-family structure.
+    </td>
+    <td width="33%">
+      <strong>3. Generate and verify</strong><br>
+      Scaffold files, externalize state, run validators, and leave behind a harness that survives fresh-context restarts.
+    </td>
+  </tr>
+</table>
 
 ## What you get
 
@@ -126,6 +147,99 @@ The visual language mirrors the skill itself:
     </td>
   </tr>
 </table>
+
+## Examples / Use Cases
+
+<details>
+<summary><strong>Example 1: Batch OCR and enrichment</strong></summary>
+
+Use:
+
+```text
+Use $harness-engineer to scaffold a Ralph Loop project for OCR and post-processing on a folder of scanned documents.
+```
+
+Suggested shape:
+
+- `--preset ralph-loop`
+- `--project-preset batch-processing`
+
+What you get:
+
+- bounded batch progression
+- `tasks.json` for mutable unit state
+- input/output/artifact directories
+- archive-friendly structure for final outputs
+
+</details>
+
+<details>
+<summary><strong>Example 2: Long-running code remediation</strong></summary>
+
+Use:
+
+```text
+Use $harness-engineer to design a recoverable harness for fixing one codebase issue per pass.
+```
+
+Suggested shape:
+
+- `--preset ralph-loop`
+- `--project-preset repo-coding`
+
+What you get:
+
+- feature or task state
+- codebase pattern memory
+- scoped feature-plan docs
+- runner + validator flow that supports incremental repair
+
+</details>
+
+<details>
+<summary><strong>Example 3: Research collection and synthesis</strong></summary>
+
+Use:
+
+```text
+Use $harness-engineer to scaffold a research harness that gathers sources, stores evidence, and synthesizes findings over multiple passes.
+```
+
+Suggested shape:
+
+- `--preset baseline` or `--preset ralph-loop` depending on loop needs
+- `--project-preset research-collection`
+
+What you get:
+
+- source manifest
+- evidence and findings separation
+- explicit research protocol
+- structure that discourages mixing raw notes with validated output
+
+</details>
+
+<details>
+<summary><strong>Example 4: UI work with browser evidence</strong></summary>
+
+Use:
+
+```text
+Use $harness-engineer to scaffold a harness for browser-visible feature work with screenshot-based validation.
+```
+
+Suggested shape:
+
+- `--preset ralph-loop`
+- `--project-preset ui-validation`
+
+What you get:
+
+- screenshot, trace, and verdict directories
+- UI validation reference doc
+- stronger prompt guardrails around rendered-state evidence
+
+</details>
 
 ## Project status
 
