@@ -12,6 +12,7 @@
   <img alt="Skill" src="https://img.shields.io/badge/类型-Codex%20Skill-0A7EA4">
   <img alt="Focus" src="https://img.shields.io/badge/主题-Harness%20Engineering-1F9D55">
   <img alt="Loop" src="https://img.shields.io/badge/Ralph%20Preset-已内置-7C3AED">
+  <img alt="Built with Codex" src="https://img.shields.io/badge/Built%20with-Codex-10B981">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-EAB308">
 </p>
 
@@ -163,6 +164,13 @@ python .\skills\harness-engineer\scripts\init_harness_project.py .\output --proj
 - validator 比自我感觉“做完了”更重要
 - 拓扑应该尽量小
 - 模型变强后，脚手架应该允许被削减，而不是无限膨胀
+
+## Attribution
+
+- 人类项目拥有者与维护者：仓库维护者
+- AI 实现与打包协助：OpenAI Codex
+
+当前采用 README 显式署名的方式来标注 Codex 参与。如果你后面还想让提交历史也带上类似归属，可以在未来的 commit 中加入 co-author trailer，或者使用专门的 bot / 账号身份。
 
 ## 已做验证
 

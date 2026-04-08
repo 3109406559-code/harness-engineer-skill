@@ -12,6 +12,7 @@
   <img alt="Skill" src="https://img.shields.io/badge/Type-Codex%20Skill-0A7EA4">
   <img alt="Focus" src="https://img.shields.io/badge/Focus-Harness%20Engineering-1F9D55">
   <img alt="Loop" src="https://img.shields.io/badge/Ralph%20Preset-Included-7C3AED">
+  <img alt="Built with Codex" src="https://img.shields.io/badge/Built%20with-Codex-10B981">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-EAB308">
 </p>
 
@@ -163,6 +164,13 @@ The skill assumes:
 - validators matter more than optimistic self-reporting
 - topology should stay as small as possible
 - scaffolding should remain replaceable as models improve
+
+## Attribution
+
+- Human project owner and curator: repository maintainer
+- AI implementation and packaging support: OpenAI Codex
+
+This repository uses explicit README attribution for Codex. If you also want Codex-like attribution inside commit metadata, use a dedicated co-author trailer or bot/account identity in future commits.
 
 ## Validation
 
